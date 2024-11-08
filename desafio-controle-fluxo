@@ -1,0 +1,31 @@
+// Contador.java
+package DesafioControleFluxo;
+
+public class Contador {
+    public static void main(String[] args) {
+        try {
+            // Converte os argumentos de entrada para inteiros
+            int primeiroParametro = Integer.parseInt(args[0]);
+            int segundoParametro = Integer.parseInt(args[1]);
+
+            // Verifica se o segundo parâmetro é maior que o primeiro
+            if (primeiroParametro >= segundoParametro) {
+                throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro");
+            }
+
+            // Calcula o número de interações e imprime os números
+            int quantidadeInteracoes = segundoParametro - primeiroParametro;
+
+            for (int i = 1; i <= quantidadeInteracoes; i++) {
+                System.out.println("Imprimindo o número " + i);
+            }
+
+        } catch (ParametrosInvalidosException e) {
+            System.err.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Os parâmetros devem ser números inteiros.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Por favor, forneça dois parâmetros numéricos.");
+        }
+    }
+}
